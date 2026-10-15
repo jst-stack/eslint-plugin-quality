@@ -1,0 +1,37 @@
+{
+	"name": "@jst-stack/eslint-plugin-quality",
+	"version": "0.1.0",
+	"description": "Strict, composable TypeScript and React source-quality rules.",
+	"type": "module",
+	"license": "MIT",
+	"engines": { "node": ">=24.15.0 <25" },
+	"exports": {
+		".": { "types": "./src/index.d.ts", "import": "./src/index.mjs" },
+		"./package.json": "./package.json"
+	},
+	"files": ["docs", "LICENSE", "README.md", "src"],
+	"scripts": {
+		"benchmark": "node scripts/run-benchmarks.mjs",
+		"lint": "eslint . --max-warnings 0",
+		"test": "node --test",
+		"check": "npm run lint && npm test && npm pack --dry-run",
+		"prepublishOnly": "npm run check"
+	},
+	"publishConfig": { "access": "public" },
+	"peerDependencies": {
+		"eslint": "^9.5.0 || ^10.0.0",
+		"typescript": ">=5.0.0 <6.1.0"
+	},
+	"peerDependenciesMeta": { "typescript": { "optional": true } },
+	"dependencies": {
+		"@eslint/js": "^10.0.1",
+		"eslint-plugin-react-hooks": "^7.1.1",
+		"eslint-plugin-sonarjs": "^4.2.2",
+		"typescript-eslint": "^8.71.2"
+	},
+	"devDependencies": { "eslint": "^10.10.0", "typescript": "^6.0.3" },
+	"repository": { "type": "git", "url": "git+https://github.com/jst-stack/eslint-plugin-quality.git" },
+	"bugs": { "url": "https://github.com/jst-stack/eslint-plugin-quality/issues" },
+	"homepage": "https://github.com/jst-stack/eslint-plugin-quality#readme",
+	"keywords": ["code-quality", "eslint", "eslintplugin", "react", "typescript"]
+}

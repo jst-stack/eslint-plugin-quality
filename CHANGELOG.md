@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.1
+
+- Ignore indivisible regular-expression literals in the line-length rule while retaining the limit for ordinary code.
+
 ## 0.2.0
 
 - Reject long lines, multiple statements per line, nested ternaries, parameter mutation, nested assignments, callback pyramids, oversized functions, and complex boolean expressions.

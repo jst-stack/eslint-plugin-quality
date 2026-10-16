@@ -3,9 +3,13 @@ const defaults = Object.freeze({
 		cognitiveComplexity: 15,
 		complexity: 12,
 		maxDepth: 3,
+		maxExpressionComplexity: 5,
+		maxLineLength: 120,
 		maxLines: 250,
 		maxLinesPerFunction: 80,
+		maxNestedCallbacks: 3,
 		maxParams: 4,
+		maxStatements: 30,
 	}),
 	react: Object.freeze({
 		booleanVariantNames: Object.freeze([

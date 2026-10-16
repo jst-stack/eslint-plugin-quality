@@ -41,7 +41,9 @@ Type-aware linting is explicit because it starts the TypeScript project service 
 ...quality.createConfig({
 	limits: {
 		cognitiveComplexity: 12,
+		maxLineLength: 100,
 		maxLinesPerFunction: 60,
+		maxStatements: 24,
 	},
 	react: {
 		booleanVariantNames: ['primary', 'danger'],
@@ -50,6 +52,8 @@ Type-aware linting is explicit because it starts the TypeScript project service 
 ```
 
 Unknown policy keys and invalid limits fail while the ESLint config loads.
+
+The default maintainability limits are 120 characters per line, 250 logical lines per file, 80 logical lines and 30 statements per function, 4 parameters, 3 nested blocks or callbacks, cyclomatic complexity 12, cognitive complexity 15, and expression complexity 5. The preset also rejects multiple statements per line, nested ternaries, parameter mutation, nested assignments, and unexplained ESLint suppressions.
 
 If another preset already owns JavaScript, TypeScript, and React correctness rules, compose only JST quality rules:
 

@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.0
+
+- Reject long lines, multiple statements per line, nested ternaries, parameter mutation, nested assignments, callback pyramids, oversized functions, and complex boolean expressions.
+- Add stable TypeScript stylistic presets to standalone syntax-only and type-aware configurations.
+- Add adversarial and typed-lint regression suites.
+- Make the benchmark validate both clean and intentionally invalid corpora instead of measuring ignored files.
+
 ## 0.1.2
 
 - Add a rules-only preset for composition with an existing ESLint base config.

@@ -5,9 +5,13 @@ export type QualityPolicy = {
 		cognitiveComplexity: number
 		complexity: number
 		maxDepth: number
+		maxExpressionComplexity: number
+		maxLineLength: number
 		maxLines: number
 		maxLinesPerFunction: number
+		maxNestedCallbacks: number
 		maxParams: number
+		maxStatements: number
 	}>
 	react?: Partial<{
 		booleanVariantNames: string[]

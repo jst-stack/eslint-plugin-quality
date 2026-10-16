@@ -12,6 +12,9 @@ export const noFlagPropCombinations = {
 	create(context) {
 		const names = new Set(context.options[0]?.names ?? [])
 		return {
+			ArrowFunctionExpression: node => validateFunction(context, node, names),
+			FunctionDeclaration: node => validateFunction(context, node, names),
+			FunctionExpression: node => validateFunction(context, node, names),
 			TSInterfaceDeclaration: node => validateTypedProps(context, node.id.name, node.body.body, names),
 			TSTypeAliasDeclaration(node) {
 				if (node.typeAnnotation.type === 'TSTypeLiteral') {
@@ -20,6 +23,29 @@ export const noFlagPropCombinations = {
 			},
 		}
 	},
+}
+
+function validateFunction(context, node, names) {
+	if (!isComponent(node)) {
+		return
+	}
+	const props = node.params[0]
+	if (props?.type !== 'ObjectPattern') {
+		return
+	}
+	const flags = props.properties
+		.map(property => property.type === 'Property' && property.key.type === 'Identifier' ? property.key.name : undefined)
+		.filter(name => names.has(name))
+	if (flags.length > 1) {
+		context.report({ data: { names: flags.join(', ') }, messageId: 'flags', node: props })
+	}
+}
+
+function isComponent(node) {
+	const name = node.id?.type === 'Identifier'
+		? node.id.name
+		: node.parent.type === 'VariableDeclarator' && node.parent.id.type === 'Identifier' ? node.parent.id.name : undefined
+	return Boolean(name && /^[A-Z]/u.test(name))
 }
 
 function validateTypedProps(context, typeName, members, names) {

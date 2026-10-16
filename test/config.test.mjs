@@ -12,3 +12,9 @@ test('typed preset configures project service explicitly', () => {
 	const configs = plugin.configs.recommendedTypeChecked({ projectService: true })
 	assert.ok(configs.some(config => config.languageOptions?.parserOptions?.projectService === true))
 })
+
+test('recommended preset does not emit undefined flat-config properties', () => {
+	for (const config of plugin.configs.recommended) {
+		assert.equal(Object.values(config).includes(undefined), false)
+	}
+})

@@ -51,6 +51,14 @@ Type-aware linting is explicit because it starts the TypeScript project service 
 
 Unknown policy keys and invalid limits fail while the ESLint config loads.
 
+If another preset already owns JavaScript, TypeScript, and React correctness rules, compose only JST quality rules:
+
+```js
+export default existingConfig(
+	...quality.createRulesConfig(),
+)
+```
+
 ## Scope
 
 Static analysis can catch deterministic code smells and likely bugs. It cannot prove business correctness, choose bounded contexts, judge semantic names, or replace review and behavioral tests.

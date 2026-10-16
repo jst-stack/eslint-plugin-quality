@@ -1,6 +1,6 @@
 {
 	"name": "@jst-stack/eslint-plugin-quality",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"description": "Strict, composable TypeScript and React source-quality rules.",
 	"type": "module",
 	"license": "MIT",

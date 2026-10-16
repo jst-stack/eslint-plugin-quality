@@ -16,12 +16,22 @@ export const noHeavyRenderWork = {
 				const method = node.callee.type === 'MemberExpression' && node.callee.property.type === 'Identifier'
 					? node.callee.property.name
 					: undefined
-				if (method && methods.has(method) && isInsideComponent(context, node)) {
+				if (method && methods.has(method) && isInsideComponent(context, node) && isArrayCalculation(context, node.callee.object)) {
 					context.report({ data: { method }, messageId: 'calculation', node })
 				}
 			},
 		}
 	},
+}
+
+function isArrayCalculation(context, node) {
+	const services = context.sourceCode.parserServices
+	if (!services?.program || !services.esTreeNodeToTSNodeMap) {
+		return true
+	}
+	const checker = services.program.getTypeChecker()
+	const type = checker.getTypeAtLocation(services.esTreeNodeToTSNodeMap.get(node))
+	return checker.isArrayType(type) || checker.isTupleType(type)
 }
 
 function isInsideComponent(context, node) {

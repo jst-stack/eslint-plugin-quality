@@ -34,6 +34,7 @@ function qualityRules(plugin, policy) {
 		files: sourceFiles,
 		plugins: { quality: plugin, sonarjs },
 		rules: {
+			'quality/no-async-component': 'error',
 			complexity: ['error', policy.limits.complexity],
 			'max-depth': ['error', policy.limits.maxDepth],
 			'max-lines': ['error', { max: policy.limits.maxLines, skipBlankLines: true, skipComments: true }],

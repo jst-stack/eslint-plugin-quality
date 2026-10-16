@@ -52,11 +52,11 @@ function qualityRules(plugin, policy) {
 }
 
 function scope(configs, files, parserOptions) {
-	return configs.map(config => ({
-		...config,
-		files,
-		languageOptions: parserOptions
-			? { ...config.languageOptions, parserOptions: { ...config.languageOptions?.parserOptions, ...parserOptions } }
-			: config.languageOptions,
-	}))
+	return configs.map(config => parserOptions
+		? {
+			...config,
+			files,
+			languageOptions: { ...config.languageOptions, parserOptions: { ...config.languageOptions?.parserOptions, ...parserOptions } },
+		}
+		: { ...config, files })
 }

@@ -63,6 +63,26 @@ export default existingConfig(
 )
 ```
 
+## Add architecture rules
+
+Install the independent architecture package when the project also needs enforced layers and module boundaries:
+
+```bash
+npm install --save-dev @jst-stack/eslint-plugin-architecture
+```
+
+```js
+import architecture from '@jst-stack/eslint-plugin-architecture'
+import quality from '@jst-stack/eslint-plugin-quality'
+
+export default [
+	...quality.configs.recommended,
+	...architecture.configs.recommended,
+]
+```
+
+Choose one quality preset: use `recommended` as a standalone base, `recommendedTypeChecked()` when type-aware rules are worth the extra lint cost, or `createRulesConfig()` when an existing base config already owns TypeScript and React correctness. Do not combine those three quality entry points.
+
 ## Scope
 
 Static analysis can catch deterministic code smells and likely bugs. It cannot prove business correctness, choose bounded contexts, judge semantic names, or replace review and behavioral tests.

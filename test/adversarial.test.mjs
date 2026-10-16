@@ -51,3 +51,9 @@ export function label(value) {
 	const [result] = await eslint.lintText(code, { filePath: 'readable.js' })
 	assert.deepEqual(result.messages, [])
 })
+
+test('recommended preset accepts an indivisible long regular expression', async () => {
+	const regex = `export const matcher = /${'segment'.repeat(20)}/u`
+	const [result] = await eslint.lintText(regex, { filePath: 'matcher.js' })
+	assert.equal(result.messages.some(message => message.ruleId === '@stylistic/max-len'), false)
+})

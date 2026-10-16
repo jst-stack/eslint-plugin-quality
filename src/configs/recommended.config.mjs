@@ -41,7 +41,10 @@ function qualityRules(plugin, policy) {
 		files: sourceFiles,
 		plugins: { '@stylistic': stylistic, quality: plugin, sonarjs },
 		rules: {
-			'@stylistic/max-len': ['error', { code: policy.limits.maxLineLength, ignoreUrls: true, tabWidth: 4 }],
+			'@stylistic/max-len': [
+				'error',
+				{ code: policy.limits.maxLineLength, ignoreRegExpLiterals: true, ignoreUrls: true, tabWidth: 4 },
+			],
 			'@stylistic/max-statements-per-line': ['error', { max: 1 }],
 			'quality/no-async-component': 'error',
 			curly: ['error', 'all'],

@@ -18,3 +18,10 @@ test('recommended preset does not emit undefined flat-config properties', () => 
 		assert.equal(Object.values(config).includes(undefined), false)
 	}
 })
+
+test('rules-only preset composes without registering a TypeScript parser plugin', () => {
+	const configs = plugin.createRulesConfig()
+	assert.equal(configs.length, 1)
+	assert.equal(configs[0].plugins?.ts, undefined)
+	assert.equal(configs[0].rules?.['quality/no-heavy-render-work'][0], 'error')
+})

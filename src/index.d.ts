@@ -28,6 +28,7 @@ declare const plugin: {
 		recommendedTypeChecked(options?: TypeCheckedOptions): Linter.Config[]
 	}
 	createConfig(policy?: QualityPolicy): Linter.Config[]
+	createRulesConfig(policy?: QualityPolicy): Linter.Config[]
 	defaultPolicy: Readonly<Required<QualityPolicy>>
 	meta: { name: string, version: string }
 	rules: Record<string, Rule.RuleModule>

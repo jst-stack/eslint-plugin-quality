@@ -18,6 +18,10 @@ export function createRecommendedConfig(plugin, overrides) {
 	]
 }
 
+export function createRulesConfig(plugin, overrides) {
+	return [qualityRules(plugin, defineQuality(overrides))]
+}
+
 export function createRecommendedTypeCheckedConfig(plugin, options = {}) {
 	const { policy: overrides, projectService = true, tsconfigRootDir } = options
 	const policy = defineQuality(overrides)

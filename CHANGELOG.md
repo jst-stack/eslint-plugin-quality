@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.2
+
+- Add a rules-only preset for composition with an existing ESLint base config.
+
 ## 0.1.1
 
 - Keep dependency resolution compatible with both supported ESLint majors.

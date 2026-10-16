@@ -1,5 +1,5 @@
 import packageMetadata from '../package.json' with { type: 'json' }
-import { createRecommendedConfig, createRecommendedTypeCheckedConfig } from './configs/recommended.config.mjs'
+import { createRecommendedConfig, createRecommendedTypeCheckedConfig, createRulesConfig } from './configs/recommended.config.mjs'
 import { defaultQualityPolicy, defineQuality } from './configs/qualityPolicy.config.mjs'
 import { noAsyncComponent } from './rules/noAsyncComponent.rule.mjs'
 import { noFlagPropCombinations } from './rules/noFlagPropCombinations.rule.mjs'
@@ -21,6 +21,7 @@ plugin.configs = {
 	recommendedTypeChecked: options => createRecommendedTypeCheckedConfig(plugin, options),
 }
 plugin.createConfig = overrides => createRecommendedConfig(plugin, overrides)
+plugin.createRulesConfig = overrides => createRulesConfig(plugin, overrides)
 plugin.defaultPolicy = defaultQualityPolicy
 
 export { defineQuality }

@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.2
+
+- Require Node.js 22.18.0 or newer, where type stripping for `.ts` ESLint configs is available.
+- Cover Node.js 22.18.0 and 24.15.0 against ESLint 9 and 10 in CI.
+
 ## 0.2.1
 
 - Ignore indivisible regular-expression literals in the line-length rule while retaining the limit for ordinary code.
